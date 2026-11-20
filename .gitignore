@@ -1,0 +1,11 @@
+# Local secrets and development files
+.dev.vars
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+
+# Cloudflare local development files
+.wrangler/
+cloudflare-worker/.wrangler/

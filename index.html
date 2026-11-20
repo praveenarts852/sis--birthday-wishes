@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff4f6">
+  <meta name="description" content="A little world of birthday surprises for Then.">
+  <title>A Little World of Birthday Surprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <div id="sparkles" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Birthday scrapbook home"><span>✿</span> a little world</a>
+    <div class="journey" aria-label="Journey progress"><span id="progressText">A little surprise awaits</span><div class="progress-track"><i id="progressBar"></i></div></div>
+  </header>
+
+  <main>
+    <section class="page active" id="birthday" aria-labelledby="birthdayTitle">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">A tiny celebration, made with love</p>
+          <h1 id="birthdayTitle">Happy Birthday,<br><em id="friendName">Then</em><span class="pink-dot">!</span></h1>
+          <p class="hero-date" id="birthdayDate">A day made a little brighter ✿</p>
+          <p class="lead">Today is not just another day. It's a little reminder of how special your existence is and how many beautiful memories we've collected.</p>
+          <button class="primary-btn" id="startJourney">There's something waiting for you <span>→</span></button>
+          <p class="tiny-note">Made especially for you, with a little extra sparkle.</p>
+        </div>
+        <div class="hero-art">
+          <div class="photo-tape">a day to celebrate ♡</div>
+          <div class="hero-polaroid">
+            <img id="mainPhoto" src="assets/images/main-photo.jpg" alt="A favourite photograph" onerror="this.src='https://placehold.co/700x850/f7dce5/8c6070?text=Add+your+photo'">
+            <p>the world is lovelier with you in it</p>
+          </div>
+          <div class="cake-sticker" aria-label="Birthday cake">🎂</div>
+          <span class="float-heart heart-a">♡</span><span class="float-heart heart-b">✦</span><span class="float-heart heart-c">✿</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="question" aria-labelledby="questionTitle" hidden>
+      <div class="narrow-card">
+        <div class="section-icon">🔐</div><p class="eyebrow">A little memory test</p>
+        <h2 id="questionTitle">Unlock the secret gifts</h2>
+        <p class="lead centered">Before we open these little surprises, let's see how well you remember our memories!</p>
+        <form id="answerForm">
+          <label class="question-label" id="questionPrompt" for="secretAnswer">Your question goes here</label>
+          <input id="secretAnswer" name="answer" type="text" autocomplete="off" placeholder="Type your answer..." required maxlength="120">
+          <button class="primary-btn full" id="answerButton" type="submit">Unlock my surprises <span>♡</span></button>
+          <p class="feedback" id="answerFeedback" role="status" aria-live="polite"></p>
+        </form>
+        <p class="tiny-note">A little hint: think of one of our favourite memories.</p>
+      </div>
+    </section>
+
+    <section class="page" id="album" aria-labelledby="albumTitle" hidden>
+      <div class="page-heading">
+        <p class="eyebrow">Little pieces of forever</p><h2 id="albumTitle">12 Pictures, 12 Little Stories</h2>
+        <p class="lead">Some pictures are just photographs. But some hold memories that words cannot explain.</p>
+      </div>
+      <div class="album-grid" id="albumGrid"></div>
+      <div class="album-ending">
+        <p class="handwritten">Every picture has a story. And these are some of my favourites.</p>
+        <button class="primary-btn" id="toVideo">One more little surprise... <span>→</span></button>
+      </div>
+    </section>
+
+    <section class="page" id="videoPage" aria-labelledby="videoTitle" hidden>
+      <div class="page-heading">
+        <p class="eyebrow">A little moment, saved forever</p><h2 id="videoTitle">Just 15 Seconds, But A Thousand Memories</h2>
+        <p class="lead">A tiny collection of moments, made to bring a smile to your face.</p>
+      </div>
+      <div class="video-shell">
+        <video id="memoryVideo" playsinline preload="metadata" controls controlslist="nodownload noplaybackrate">
+          <source src="assets/video/birthday-memory.mp4" type="video/mp4">
+          Your browser does not support HTML video.
+        </video>
+        <div class="video-placeholder" id="videoPlaceholder"><span>▶</span><p>Your little video surprise is waiting</p><small>Add birthday-memory.mp4 to assets/video</small></div>
+      </div>
+      <p class="feedback centered" id="videoFeedback" role="status">Press play when you're ready ♡</p>
+      <div class="unlock-panel" id="videoComplete" hidden>
+        <p class="handwritten">Hope that little video made you smile.</p><p>There's one last thing...</p>
+        <button class="primary-btn" id="toLetter">Open Your Final Surprise <span>♡</span></button>
+      </div>
+    </section>
+
+    <section class="page" id="letterPage" aria-labelledby="letterTitle" hidden>
+      <div class="page-heading"><p class="eyebrow">A few words from my heart</p><h2 id="letterTitle">A letter, just for you</h2><p class="lead">Some things are nicer when they're opened slowly.</p></div>
+      <div class="envelope-wrap">
+        <button class="envelope" id="openEnvelope" aria-label="Open the birthday letter">
+          <span class="envelope-back"></span><span class="letter-preview">for you, with love ♡</span><span class="envelope-flap"></span><span class="envelope-front"></span><span class="seal">♥</span>
+        </button>
+        <p class="tiny-note" id="envelopeHint">Tap the envelope to open your letter</p>
+      </div>
+      <article class="letter-paper" id="letterPaper" hidden>
+        <div class="letter-flower">✿</div><p class="letter-to">Dear Then,</p>
+        <div id="personalLetter" class="letter-content"></div>
+        <p class="letter-signoff">With love, always ♡</p>
+      </article>
+      <div class="letter-ending" id="letterEnding" hidden>
+        <p class="handwritten">Some memories stay special, no matter how much time passes.</p>
+        <p>One last thing... this is for you.</p>
+        <button class="primary-btn" id="toSong">Play Our Special Song <span>♫</span></button>
+      </div>
+    </section>
+
+    <section class="page final-page" id="songPage" aria-labelledby="songTitle" hidden>
+      <div class="music-orbit">♫</div><p class="eyebrow">The last little surprise</p>
+      <h2 id="songTitle">There's a song that reminds me of you.</h2>
+      <p class="lead centered">If I hear this song, you're the first person who comes to my thoughts.</p>
+      <div class="music-card">
+        <div class="album-art" id="albumArt">♡<small>our little song</small></div>
+        <div class="song-meta"><span class="eyebrow">A song for you</span><h3 id="songName">Your Favourite Song</h3><p id="songArtist">Artist name</p></div>
+        <div class="visualizer" id="visualizer" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <audio id="birthdayAudio" preload="metadata"><source src="assets/audio/favourite-song.mp3" type="audio/mpeg"></audio>
+        <div class="audio-controls"><button id="playPause" class="play-btn" aria-label="Play song">▶</button><div class="audio-progress"><div class="time-row"><span id="currentTime">0:00</span><span id="duration">0:00</span></div><input id="seekBar" type="range" min="0" max="100" value="0" aria-label="Seek song"></div></div>
+        <p class="tiny-note" id="audioStatus">Your song is ready whenever you are.</p>
+      </div>
+      <div class="final-message">
+        <h3>Happy Birthday Once Again!</h3>
+        <p>Thank you for being part of these beautiful memories. I hope your life is filled with happiness, laughter, and countless wonderful moments.</p>
+        <p>Stay happy. Keep smiling. And never stop being you.</p>
+        <p class="signature">With lots of wishes <span>❤️</span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>collected moments, wrapped in a little love <span>♡</span></footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photograph viewer" hidden>
+    <button class="lightbox-close" id="closeLightbox" aria-label="Close photograph">×</button>
+    <button class="lightbox-arrow prev" id="prevPhoto" aria-label="Previous photograph">‹</button>
+    <figure><img id="lightboxImage" alt=""><figcaption id="lightboxCaption"></figcaption></figure>
+    <button class="lightbox-arrow next" id="nextPhoto" aria-label="Next photograph">›</button>
+  </div>
+  <script src="js/config.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/album.js"></script>
+  <script src="js/video.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
